@@ -1,5 +1,7 @@
 nav {
     background-color: #ffffff;
+    border-top: 3px solid #36a0b2;
+    border-bottom: 3px solid #36a0b2;
 }
 
 nav li {

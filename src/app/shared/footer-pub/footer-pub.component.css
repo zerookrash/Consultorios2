@@ -3,6 +3,10 @@
     color: #36a0b2;
 }
 
+.color {
+    border: 2px solid #36a0b2;
+}
+
 .margen {
     margin-left: 12px;
 }
