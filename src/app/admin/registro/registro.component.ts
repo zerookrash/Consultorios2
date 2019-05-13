@@ -36,11 +36,11 @@ export class RegistroComponent implements OnInit {
   constructor( 
     private datosService: DatosService,
     private authService: AuthService,
-    private router: Router,
     private clientes: ClientesService
     ) {
       
-      datosService.cargarClientes();
+      
+      clientes.usrs();
 
     }
   

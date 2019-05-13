@@ -3,6 +3,10 @@
     border: 1px solid lightgrey;
 }
 
+h3 {
+    font-family: 'Oswald', sans-serif;
+}
+
 .vensio {
     padding: 1rem;
     border: 1px solid lightgrey;
