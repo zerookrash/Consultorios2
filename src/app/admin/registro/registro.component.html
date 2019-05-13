@@ -80,12 +80,14 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-5">
                         <div class="form-group">
                             <select class="form-control" #especialidad='ngModel' name="especialidad" [(ngModel)]="reg_user.especialidad">
                           <option value="Medicina General" selected>Medicina General</option>
                           <option value="Psicología">Psicología</option>
                           <option value="Sala de Juntas">Sala de Juntas</option>
+                          <option value="Medicina General y Sala de Juntas">Medicina General y Sala de Juntas</option>
+                          <option value="Psicología y Sala de Juntas">Psicología y Sala de Juntas</option>
                             </select>
                         </div>
 
@@ -94,7 +96,8 @@
                             <div *ngIf="especialidad.errors.minlength">Especialidad must be at least 4 characters</div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+
+                    <div class="col-12 col-md-5">
                         <div class="form-group">
                             <input type="text" onkeyup="this.value=this.value.toUpperCase()" #contrato="ngModel" name="contrato" class="form-control" placeholder="No. de Contrato" [(ngModel)]="reg_user.contrato" required minlength="5" maxlength="10">
                         </div>

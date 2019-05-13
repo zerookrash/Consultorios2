@@ -81,6 +81,14 @@ export class DashbordDrsComponent implements OnInit {
               case 'Sala de Juntas':
                 this.espSj = true;
                 break;
+              case 'Medicina General y Sala de Juntas':
+                this.espDrs = true;
+                this.espSj = true;
+                break;
+              case 'Psicología y Sala de Juntas':
+                this.espPs = true;
+                this.espSj = true;
+                break;
               case 'Adeudo':
                 this.mensaje = true;
                 break;
