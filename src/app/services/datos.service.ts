@@ -8,7 +8,7 @@ import { ClientesInterface } from '../models/clientes-interface';
 })
 export class DatosService {
 
-  clientes: ClientesInterface[] = [];
+  cliente: ClientesInterface[] = [];
 
   constructor( private http: HttpClient ) { 
     
@@ -19,7 +19,8 @@ export class DatosService {
       let token = localStorage.getItem('accessToken');
       this.http.get(`http://localhost:3000/api/cat_usuarios?access_token=${token}`)
       .subscribe(( res: ClientesInterface[] ) => {
-        this.clientes = res;
+        this.cliente = res;
+        console.log(this.cliente);
       });
     });
   }
