@@ -1,0 +1,18 @@
+.card {
+    border: 1px solid lightgrey;
+}
+
+.card input,
+.card textarea {
+    border: 1px solid lightgrey;
+}
+
+.rem {
+    width: 100%;
+    margin: auto auto;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}

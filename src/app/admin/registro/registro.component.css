@@ -1,0 +1,36 @@
+.pad {
+    padding: 2rem;
+    border: 1px solid lightgrey;
+}
+
+.vensio {
+    padding: 1rem;
+    border: 1px solid lightgrey;
+    margin-bottom: 1rem
+}
+
+.aling {
+    margin: auto auto;
+}
+
+.pad2 {
+    padding: 2rem;
+}
+
+div.scrollmenu {
+    background-color: #ffffff;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}

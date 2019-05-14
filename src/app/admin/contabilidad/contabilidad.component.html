@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <h1 class="text-center">Contabilidad</h1>
+    <div class="card pad">
+        <div class="card-title">
+            <h2>Comparativa de Fechas</h2>
+        </div>
+        <div class="card-body">
+            <!-- Form Fechas -->
+            <form #formDate="ngForm" (ngSubmit)="onDateParam(formDate)">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="fechaInicio" class="col-6 col-form-label">Fecha de Inicio</label>
+                            <div class="col-10">
+                                <input class="form-control" type="date" id="fechaInicio" #fechaInicio="ngModel" name="fechaInicio" [(ngModel)]="fechas.fechaInicio" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="fechaFin" class="col-6 col-form-label">Fecha Final</label>
+                            <div class="col-10">
+                                <input class="form-control" type="date" id="fechaFin" #fechaFin="ngModel" name="fechaFin" [(ngModel)]="fechas.fechaFin" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-block btn-outline-primary">Enviar</button>
+                </div>
+            </form>
+            <!-- END Form Fechas -->
+            <br>
+            <div *ngIf="contabilidadService.visible" class="row text-center">
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-title">
+                            <h2>Citas</h2>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <h3> {{contabilidadService.ctaCitas}} </h3>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-title">
+                            <h2>Por Cobrar</h2>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <h3>$ {{contabilidadService.monyeCitas}} <small>.00</small></h3>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1"></div>
+                <div class="col-12 col-md-10 scrollmenu">
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha y hora</th>
+                                <th scope="col">Consultorio</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cita of contabilidadService.conatCitas">
+                                <td> {{cita.fecha_cita | date: 'medium'}} </td>
+                                <td> {{cita.consultorio}} </td>
+                                <td> {{cita.estadoPago}} </td>
+                                <td> <button class="btn btn-circle btn-info" (click)="onPago(cita.id)"><i class="fas fa-dollar-sign"></i></button> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

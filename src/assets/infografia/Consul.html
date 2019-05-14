@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:4200/#/login -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Consul</title>
+    <!--<base href="/">--><base href=".">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="http://localhost:4200/favicon.ico">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="./Consul_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="./Consul_files/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<style type="text/css">/* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #F1EEED;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RTs7QUFFOUU7SUFDSSx5QkFBeUI7QUFDN0IiLCJmaWxlIjoic3JjL3N0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBZb3UgY2FuIGFkZCBnbG9iYWwgc3R5bGVzIHRvIHRoaXMgZmlsZSwgYW5kIGFsc28gaW1wb3J0IG90aGVyIHN0eWxlIGZpbGVzICovXG5cbmJvZHkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNGMUVFRUQ7XG59Il19 */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3B1Yi5jb21wb25lbnQuY3NzIn0= */</style><style>.carousel[_ngcontent-c2], .carousel-inner[_ngcontent-c2] > .carousel-item[_ngcontent-c2] > img[_ngcontent-c2] {
+    width: 100%;
+}
+
+p[_ngcontent-c2] {
+    font-size: 1rem;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL3NsaWRlL3NsaWRlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0lBRUksV0FBVztBQUNmOztBQUVBO0lBQ0ksZUFBZTtBQUNuQiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9zbGlkZS9zbGlkZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcm91c2VsLFxuLmNhcm91c2VsLWlubmVyPi5jYXJvdXNlbC1pdGVtPmltZyB7XG4gICAgd2lkdGg6IDEwMCU7XG59XG5cbnAge1xuICAgIGZvbnQtc2l6ZTogMXJlbTtcbn0iXX0= */</style><style>nav[_ngcontent-c3] {
+    background-color: #ff2a2a;
+}
+
+nav[_ngcontent-c3]   li[_ngcontent-c3] {
+    align-content: flex-end;
+}
+
+nav[_ngcontent-c3]   li[_ngcontent-c3]   a[_ngcontent-c3] {
+    font-size: 1.8rem;
+    margin: auto 2rem;
+    color: #ffffff;
+}
+
+nav[_ngcontent-c3]   button[_ngcontent-c3] {
+    color: #ffffff;
+}
+
+.user[_ngcontent-c3] {
+    color: #ffffff;
+    list-style: none;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHlCQUF5QjtBQUM3Qjs7QUFFQTtJQUNJLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQixpQkFBaUI7SUFDakIsY0FBYztBQUNsQjs7QUFFQTtJQUNJLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxjQUFjO0lBQ2QsZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIm5hdiB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2ZmMmEyYTtcbn1cblxubmF2IGxpIHtcbiAgICBhbGlnbi1jb250ZW50OiBmbGV4LWVuZDtcbn1cblxubmF2IGxpIGEge1xuICAgIGZvbnQtc2l6ZTogMS44cmVtO1xuICAgIG1hcmdpbjogYXV0byAycmVtO1xuICAgIGNvbG9yOiAjZmZmZmZmO1xufVxuXG5uYXYgYnV0dG9uIHtcbiAgICBjb2xvcjogI2ZmZmZmZjtcbn1cblxuLnVzZXIge1xuICAgIGNvbG9yOiAjZmZmZmZmO1xuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG59Il19 */</style><style>.site-footer[_ngcontent-c4] {
+    background-color: #ff2a2a;
+    color: #ffffff;
+}
+
+.margen[_ngcontent-c4] {
+    margin-left: 12px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHlCQUF5QjtJQUN6QixjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zaXRlLWZvb3RlciB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2ZmMmEyYTtcbiAgICBjb2xvcjogI2ZmZmZmZjtcbn1cblxuLm1hcmdlbiB7XG4gICAgbWFyZ2luLWxlZnQ6IDEycHg7XG59Il19 */</style><style>h2.center[_ngcontent-c5] {
+    text-align: center;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvZmFxcy9mYXFzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7QUFDdEIiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9mYXFzL2ZhcXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImgyLmNlbnRlciB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufSJdfQ== */</style><style>.rem[_ngcontent-c6] {
+    width: 30rem;
+    margin: auto auto;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixpQkFBaUI7QUFDckIiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnJlbSB7XG4gICAgd2lkdGg6IDMwcmVtO1xuICAgIG1hcmdpbjogYXV0byBhdXRvO1xufSJdfQ== */</style></head>
+
+<body>
+    <app-root _nghost-c0="" ng-version="7.2.11"><router-outlet _ngcontent-c0=""></router-outlet><app-pub _nghost-c1=""><app-slide _ngcontent-c1="" _nghost-c2=""><div _ngcontent-c2="" class="carousel slide" data-ride="carousel" id="carouselExampleControls"><div _ngcontent-c2="" class="carousel-inner"><div _ngcontent-c2="" class="carousel-item"><img _ngcontent-c2="" alt="First slide" class="d-block" src="./Consul_files/1.jpg"><div _ngcontent-c2="" class="carousel-caption d-none d-md-block"><h1 _ngcontent-c2="">First slide label</h1><p _ngcontent-c2="">Nulla vitae elit libero, a pharetra augue mollis interdum.</p></div></div><div _ngcontent-c2="" class="carousel-item"><img _ngcontent-c2="" alt="Second slide" class="d-block" src="./Consul_files/2.jpg"><div _ngcontent-c2="" class="carousel-caption d-none d-md-block"><h1 _ngcontent-c2="">Second slide label</h1><p _ngcontent-c2="">Nulla vitae elit libero, a pharetra augue mollis interdum.</p></div></div><div _ngcontent-c2="" class="carousel-item active"><img _ngcontent-c2="" alt="Third slide" class="d-block" src="./Consul_files/3.jpg"><div _ngcontent-c2="" class="carousel-caption d-none d-md-block"><h1 _ngcontent-c2="">Third slide label</h1><p _ngcontent-c2="">Nulla vitae elit libero, a pharetra augue mollis interdum.</p></div></div></div><a _ngcontent-c2="" class="carousel-control-prev" data-slide="prev" href="http://localhost:4200/#carouselExampleControls" role="button"><span _ngcontent-c2="" aria-hidden="true" class="carousel-control-prev-icon"></span><span _ngcontent-c2="" class="sr-only">Previous</span></a><a _ngcontent-c2="" class="carousel-control-next" data-slide="next" href="http://localhost:4200/#carouselExampleControls" role="button"><span _ngcontent-c2="" aria-hidden="true" class="carousel-control-next-icon"></span><span _ngcontent-c2="" class="sr-only">Next</span></a></div></app-slide><app-navbar _ngcontent-c1="" _nghost-c3=""><nav _ngcontent-c3="" class="navbar navbar-expand-lg navbar-light sticky-top"><div _ngcontent-c3="" class="container"><a _ngcontent-c3="" class="navbar-brand" href="http://localhost:4200/#">LOGO</a><button _ngcontent-c3="" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse" type="button"><span _ngcontent-c3="" class="navbar-toggler-icon"></span></button><div _ngcontent-c3="" class="collapse navbar-collapse justify-content-end" id="navbarNav"><ul _ngcontent-c3="" class="navbar-nav"><li _ngcontent-c3="" class="nav-item"><a _ngcontent-c3="" class="nav-link" routerlink="home" routerlinkactive="active" ng-reflect-router-link="home" ng-reflect-router-link-active="active" href="http://localhost:4200/#/login/(home)">Inicio</a></li><li _ngcontent-c3="" class="nav-item"><a _ngcontent-c3="" class="nav-link" routerlink="faqs" routerlinkactive="active" ng-reflect-router-link="faqs" ng-reflect-router-link-active="active" href="http://localhost:4200/#/login/(faqs)">FAQ's</a></li><li _ngcontent-c3="" class="nav-item"><a _ngcontent-c3="" class="nav-link" routerlink="contacto" routerlinkactive="active" ng-reflect-router-link="contacto" ng-reflect-router-link-active="active" href="http://localhost:4200/#/login/(contacto)">Contacto</a></li><li _ngcontent-c3="" class="nav-item"><a _ngcontent-c3="" class="nav-link" routerlink="login" routerlinkactive="active" ng-reflect-router-link="login" ng-reflect-router-link-active="active" href="http://localhost:4200/#/login/(login)">Log In</a></li></ul></div></div></nav></app-navbar><div _ngcontent-c1="" class="container mt-3 mb-3"><router-outlet _ngcontent-c1=""></router-outlet><app-login _nghost-c6=""><div _ngcontent-c6="" class="card rem"><div _ngcontent-c6="" class="card-body"><div _ngcontent-c6="" class="card-text"><div _ngcontent-c6="" class="container"><h1 _ngcontent-c6="">Iniciar sesión</h1><form _ngcontent-c6="" class="form ng-untouched ng-pristine ng-valid" novalidate=""><div _ngcontent-c6="" class="input-group mb-3"><input _ngcontent-c6="" class="form-control" placeholder="Username" type="text"></div><div _ngcontent-c6="" class="input-group mb-3"><input _ngcontent-c6="" class="form-control" placeholder="Password" type="password"></div><button _ngcontent-c6="" class="btn btn-outline-primary btn-block" id="login-button" type="submit">Login</button></form></div></div></div></div></app-login></div><app-footer _ngcontent-c1="" _nghost-c4=""><footer _ngcontent-c4="" class="site-footer"><div _ngcontent-c4="" class="container"><div _ngcontent-c4="" class="row"><div _ngcontent-c4="" class="col-md-12 text-center"><h1 _ngcontent-c4="">Siguenos en:</h1></div></div><div _ngcontent-c4="" class="row"><div _ngcontent-c4="" class="col"></div><div _ngcontent-c4="" class="col-s-auto"><i _ngcontent-c4="" class="fab fa-facebook-square fa-6x"></i></div><div _ngcontent-c4="" class="col-s-auto margen"><i _ngcontent-c4="" class="fab fa-instagram fa-6x"></i></div><div _ngcontent-c4="" class="col"></div></div><div _ngcontent-c4="" class="row justify-content-center"><div _ngcontent-c4="" class="col-md-12 text-center"> Copyright © 2019 All rights reserved | Page adapted and programmed <i _ngcontent-c4="" aria-hidden="true" class="fa fa-heart-o"></i> by <a _ngcontent-c4="" href="https://zerookrash.github.io/portafolio/#/home" target="_blank"><br _ngcontent-c4=""> Zerookrash</a><br _ngcontent-c4=""></div></div></div></footer></app-footer></app-pub></app-root>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="./Consul_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="./Consul_files/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="./Consul_files/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="./Consul_files/runtime.js"></script><script type="text/javascript" src="./Consul_files/es2015-polyfills.js" nomodule=""></script><script type="text/javascript" src="./Consul_files/polyfills.js"></script><script type="text/javascript" src="./Consul_files/styles.js"></script><script type="text/javascript" src="./Consul_files/vendor.js"></script><script type="text/javascript" src="./Consul_files/main.js"></script>
+
+</body></html>

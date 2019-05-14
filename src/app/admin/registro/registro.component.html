@@ -1,0 +1,161 @@
+<div class="container-fluid">
+    <h1 class="text-center">Reservas de Clientes</h1>
+    <div class="card pad">
+
+        <div class="card-body">
+            <!-- Formulario de Registro -->
+            <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
+                <div class="alert alert-danger" role="alert" *ngIf="isError">
+                    {{msgError}}
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="text" #name="ngModel" name="nombre" class="form-control" placeholder="Nombre" [(ngModel)]="reg_user.realm" required minlength="4" maxlength="50">
+                        </div>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="name.touched && !name.valid">
+                            <div *ngIf="name.errors.required">Name is required</div>
+                            <div *ngIf="name.errors.minlength">Name must be at least 4 characters</div>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="email" #email="ngModel" name="email" class="form-control" placeholder="Correo Eléctronico" [(ngModel)]="reg_user.email" required minlength="8">
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.minlength">Email must be at least 8 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="text" #usuario="ngModel" name="usuario" class="form-control" placeholder="Usuario" [(ngModel)]="reg_user.username" required minlength="4" maxlength="15">
+                        </div>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="name.touched && !name.valid">
+                            <div *ngIf="name.errors.required">User is required</div>
+                            <div *ngIf="name.errors.minlength">User must be at least 4 characters</div>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="password" #password="ngModel" name="password" class="form-control" placeholder="Password" [(ngModel)]="reg_user.password" required minlength="5" maxlength="10">
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="password.touched && !password.valid">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">Password must be at least 5 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="text" #telefono="ngModel" name="telefono" class="form-control" placeholder="Teléfono" [(ngModel)]="reg_user.telefono" required minlength="4" maxlength="15">
+                        </div>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="name.touched && !name.valid">
+                            <div *ngIf="name.errors.required">Telephone is required</div>
+                            <div *ngIf="name.errors.minlength">Telephone must be at least 4 characters</div>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <select class="form-control" #rol='ngModel' name="rol" [(ngModel)]="reg_user.rol">
+                                <option value="administrador" selected>Administrador</option>
+                                <option value="doctor">Doctor</option>
+                            </select>
+                        </div>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="rol.touched && !rol.valid">
+                            <div *ngIf="rol.errors.required">Rol is required</div>
+                            <div *ngIf="rol.errors.minlength">Rol must be at least 4 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" #especialidad='ngModel' name="especialidad" [(ngModel)]="reg_user.especialidad">
+                          <option value="Medicina General" selected>Medicina General</option>
+                          <option value="Psicología">Psicología</option>
+                          <option value="Sala de Juntas">Sala de Juntas</option>
+                            </select>
+                        </div>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="especialidad.touched && !especialidad.valid">
+                            <div *ngIf="especialidad.errors.required">Especialidad is required</div>
+                            <div *ngIf="especialidad.errors.minlength">Especialidad must be at least 4 characters</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <input type="text" onkeyup="this.value=this.value.toUpperCase()" #contrato="ngModel" name="contrato" class="form-control" placeholder="No. de Contrato" [(ngModel)]="reg_user.contrato" required minlength="5" maxlength="10">
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="contrato.touched && !contrato.valid">
+                            <div *ngIf="contrato.errors.required">Número de contrato is required</div>
+                            <div *ngIf="contrato.errors.minlength">Número de contrato must be at least 5 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+
+                    <div class="col-12 col-md-5 text-center vensio">
+                        <label><h3>Fecha de Alta del Contrato.</h3></label>
+                        <h4> {{alt}} </h4>
+                    </div>
+                    <div class="col-12 col-md-2"></div>
+                    <div class="col-12 col-md-5 text-center vensio">
+                        <label><h3>Fecha de Vencimiento del Contrato.</h3></label>
+                        <h4> {{exp}} </h4>
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+            </form>
+            <!-- /Formulario de Registro -->
+        </div>
+    </div>
+    <div class="card pad2">
+        <div class="card-title">
+            <h2>Usuarios</h2>
+        </div>
+        <div class="card-body scrollmenu">
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col">Contrato</th>
+                        <th scope="col">Fecha Alta</th>
+                        <th scope="col">Fecha Vencimiento</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">UserName</th>
+                        <th scope="col">Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of clientes.allClientes">
+                        <th> {{cliente.realm}} </th>
+                        <td> {{cliente.especialidad}} </td>
+                        <td> {{cliente.contrato}} </td>
+                        <td> {{cliente.alta | date}} </td>
+                        <td> {{cliente.expira | date}} </td>
+                        <td> {{cliente.email}} </td>
+                        <td> {{cliente.username}} </td>
+                        <td> <input type="checkbox" aria-label="Checkbox for following text input"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

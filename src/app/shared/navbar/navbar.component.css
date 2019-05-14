@@ -1,0 +1,22 @@
+nav {
+    background-color: #ffffff;
+}
+
+nav li {
+    align-content: flex-end;
+}
+
+nav li a {
+    font-size: 1.8rem;
+    margin: auto 2rem;
+    color: #36a0b2;
+}
+
+nav button {
+    color: #36a0b2;
+}
+
+.user {
+    color: #36a0b2;
+    list-style: none;
+}

@@ -1,0 +1,29 @@
+<div class="card rem">
+    <div class="card-body">
+        <h5 class="card-title">Contáctanos</h5>
+        <div class="card-text">
+            <!-- Formulario -->
+            <form (ngSubmit)="contactForm(form.value)" #form="ngForm">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" ngModel>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="correo" placeholder="Correo Eléctronico" ngModel>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" cols="30" rows="10" name="mensaje" placeholder="Deja tu mensaje." ngModel></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary">Enviar</button>
+            </form>
+            <!-- /Formulario -->
+        </div>
+    </div>
+</div>

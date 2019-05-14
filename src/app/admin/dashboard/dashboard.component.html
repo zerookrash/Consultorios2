@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <h1 class="text-center">Dashboard</h1>
+    <div class="card pad">
+        <div class="card-title">
+            <h2>Resumen del Día</h2>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+
+                <div class="row text-center">
+                    <div class="col-12 col-md-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h2>Citas</h2>
+                                <hr>
+                            </div>
+                            <div class="card-body">
+                                <h3>{{citasServices.citas}}</h3>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h2>Por Cobrar</h2>
+                                <hr>
+                            </div>
+                            <div class="card-body">
+                                <h3>$ {{citasServices.precio}}<small>.00</small></h3>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="card pad">
+        <div class="card-title">
+            <h2>Citas Agendadas</h2>
+        </div>
+        <div class="card-body scrollmenu">
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha y hora</th>
+                        <th scope="col">Consultorio</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cita of citasServices.allCitas">
+                        <td> {{cita.fecha_cita | date: 'medium'}} </td>
+                        <td> {{cita.consultorio}} </td>
+                        <td> {{cita.estadoPago}} </td>
+                        <td> <button class="btn btn-circle btn-info" (click)="onPago(cita.id)"><i class="fas fa-dollar-sign"></i></button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
