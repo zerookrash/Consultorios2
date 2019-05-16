@@ -37,15 +37,14 @@ export class ContactoComponent implements OnInit {
         this.router.navigate(['pub/home']);
       },
       err => {
-        // Alerta de Exito
+        // Alerta de Error
         Swal.fire({
           position: 'center',
           type: 'error',
           title: 'Revice que todos los campos esten con la informaciòn correcta.',
           showConfirmButton: false,
-          timer: 2500
+          timer: 3500
         })
-        console.log(err);
       }
     );
   }

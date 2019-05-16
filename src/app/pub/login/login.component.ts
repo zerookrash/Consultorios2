@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserInterface } from 'src/app/models/user-interface';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({templateUrl: 'login.component.html'})
@@ -30,7 +31,15 @@ export class LoginComponent {
           },
           err => {
             console.log(err);
-            alert('Usuario no existente');
+             // Alerta de Error
+            Swal.fire({
+              position: 'center',
+              type: 'error',
+              title: 'Usuario y/o contraseña invalidos.',
+              text:`${err}`,
+              showConfirmButton: false,
+              timer: 3500
+            })
           }
         );
     }
