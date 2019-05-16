@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 import * as moment from 'moment';
 
 import { ClientesInterface } from '../../models/clientes-interface';
@@ -91,6 +90,9 @@ export class RegistroComponent implements OnInit {
         timer: 2500
       })
     }
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
     
   }   
 }
