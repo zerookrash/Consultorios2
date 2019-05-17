@@ -10,24 +10,32 @@ import { CitaInterface } from '../models/cita.interface';
 export class CitasService {
 
   constructor( private http: HttpClient ) { }
-  citas: number = 0;
-  precio: number = 0;
+
+  
+  citas: number;
+  precio: number;
+  citasPendientes = [];
   citasUsr;
   allCitas;
 
   
 
+  // RESUMEN DEL DIA
   public cargarCitas(){
     return new Promise( () => {
       let token = localStorage.getItem('accessToken');
-      this.http.get(`http://localhost:3000/api/cat_citas2s?access_token=${token}`)
+      let urlApi = `http://localhost:3000/api/cat_citas2s?access_token=${token}`;
+      this.http.get(urlApi)
       .subscribe((res:CitaInterface) => {
+        this.citas = 0;
+        this.precio = 0;
        Object.values(res).forEach(cita => {
-
         let fechaDb = moment(cita.fecha_cita).format('D/M/YYYY');
         let hoy = moment(new Date()).format('D/M/YYYY');
+        let estado = cita.estadoPago;
 
-        if(fechaDb == hoy){
+
+        if(fechaDb == hoy && estado == 'PENDIENTE' ){
           this.citas += 1;
           switch (cita.consultorio) {
             case 'MG1':
@@ -47,22 +55,27 @@ export class CitasService {
               break;
           }
         }
+        
       });
-      console.log(this.precio);
       });
     });
   }
 
+  // CITAS PENDIENTES DE PAGO
   public getAllCitas(){
     return new Promise ( () => {
       let token = localStorage.getItem('accessToken');
-      this.http.get(`http://localhost:3000/api/cat_citas2s?access_token=${token}`)
+      let urlApi = `http://localhost:3000/api/cat_citas2s?access_token=${token}`;
+      this.http.get(urlApi)
       .subscribe((res:any) => {
-        this.allCitas = res;
+        this.citasPendientes = res.filter( pendiente => pendiente.estadoPago == 'PENDIENTE' );
       })
     });
   }
 
+
+
+  // DASHBOARD-DRS
   public citaUser( 
     fecha_cita: Date,
      consultorio: string,
@@ -100,4 +113,4 @@ export class CitasService {
           this.citasUsr = data;
         });
     }
-}
+  }
