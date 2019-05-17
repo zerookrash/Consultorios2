@@ -8,7 +8,6 @@ import { CitaInterface } from '../../models/cita.interface';
 import { CitasService } from '../../services/citas.service';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
-import { pipe } from 'rxjs';
 
 
 
@@ -37,7 +36,8 @@ export class DashbordDrsComponent implements OnInit {
     ngOnInit() { 
   }
   
-   hoy = Date();
+   
+
    public reg_cita = {
      fechaCita: new Date(),
      consultorio: "",
@@ -54,11 +54,8 @@ export class DashbordDrsComponent implements OnInit {
     let id = this.user.id;
     let urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas?access_token=${token}`;
     this.http.get(urlApi).subscribe((res:any) => {
-
       if(res){
-
         res.forEach(element => {
-          console.log(this.especialidad);
           let fechaDb = moment(element.fecha_cita).format('YYYY MM DD');
           let fechaHoy = moment(hoy).format('YYYY MM DD');
   
@@ -85,72 +82,71 @@ export class DashbordDrsComponent implements OnInit {
                 this.espDrs = true;
                 this.espSj = true;
                 break;
-              case 'Psicología y Sala de Juntas':
+                case 'Psicología y Sala de Juntas':
                 this.espPs = true;
                 this.espSj = true;
                 break;
-              case 'Adeudo':
+                case 'Adeudo':
                 this.mensaje = true;
                 break;
               default:
                 break;
             }
-            console.log(this.especialidad);
-    });
-    
-   }
+    });   
+  }
+
 
 
    onCita(){
-     let coin: Boolean = true;
-     let token = localStorage.getItem("accessToken");
-     let urlResHoy = `http://localhost:3000/api/cat_citas2s/reservas-hoy?fecha=${this.reg_cita.fechaCita}&access_token=${token}`;
-     this.http.get(urlResHoy).subscribe((res:any) => {
-       this.reg_cita.horaInicio = this.reg_cita.fechaCita;
-      
-        res.reservas.forEach(element => {
-          let hrsDb = new Date(element.horaInicio).getHours();
-          let cosulDb = element.cosultorio;
-          let hrsForm = new Date(this.reg_cita.horaInicio).getHours();
-          let consultorio = this.reg_cita.consultorio;
-          
 
-          if(hrsDb != hrsForm && cosulDb != consultorio) {
-            coin = true;
-          } else {
-            coin = false;
-          }
-          
-        }); 
-        if(coin){
-          this.citasServices.citaUser(
-            this.reg_cita.fechaCita,
-            this.reg_cita.consultorio,
-            this.reg_cita.estadoPago,
-            this.reg_cita.horaInicio,
-            this.reg_cita.catUsuariosId
-          )
-          .subscribe( data => {
-            data;
-              Swal.fire({
-                position: 'center',
-                type: 'success',
-                title: 'Cita registrada con Exito',
-                showConfirmButton: false,
-                timer: 2500
-              });
-          })
-        } else {
-          Swal.fire({
-            position: 'center',
-            type: 'error',
-            title: 'El horario y/o el consultorio',
-            text: 'No está disponible',
-            showConfirmButton: false,
-            timer: 2500
-          });
-        }
-     });
+    let token = localStorage.getItem("accessToken");
+    let urlApi = `http://localhost:3000/api/cat_citas2s/reservas-hoy?fecha=${this.reg_cita.fechaCita}&access_token=${token}`;
+    this.http.get(urlApi)
+    .subscribe( (res:any) => {
+
+      this.reg_cita.horaInicio = this.reg_cita.fechaCita
+
+      let hoy = moment(new Date()).format('DD/M/YYYY');
+      let fechaCita = moment(this.reg_cita.fechaCita).format('DD/M/YYYY');
+
+      let horaActual = new Date().getTime();
+      let horaCita = new Date(this.reg_cita.horaInicio).getTime();
+
+      let diaCita = moment(this.reg_cita.fechaCita).format('dddd');
+      let horaInicio = moment('08:59', 'HH:mm').format('HH:mm');
+      let horaFinal = moment('21:00', 'HH:mm').format('HH:mm');
+      let horaFinalS = moment('16:00', 'HH:mm').format('HH:mm');
+   
+    if(!this.reg_cita.consultorio){
+      Swal.fire({
+        position: 'center',
+        type: 'error',
+        title: 'Especifique un consultorio',
+        showConfirmButton: false,
+        timer: 2500
+      })
+    } else if( fechaCita < hoy){
+      Swal.fire({
+        position: 'center',
+        type: 'error',
+        title: 'Fecha invalida',
+        showConfirmButton: false,
+        timer: 2500
+      })
+    } else if(horaCita < horaActual) {
+      Swal.fire({
+        position: 'center',
+        type: 'error',
+        title: 'Hora invalida',
+        showConfirmButton: false,
+        timer: 2500
+      })
+    } else {
+
+     console.log('Valido!');
+    }
+    });
+
    }
 
   
@@ -184,7 +180,7 @@ export class DashbordDrsComponent implements OnInit {
               showConfirmButton: false,
               timer: 2500
             })
-            this.citasServices.getCitas();
+          this.citasServices.getCitas();
           })
 
       }
