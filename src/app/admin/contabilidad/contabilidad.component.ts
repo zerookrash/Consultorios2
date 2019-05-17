@@ -34,10 +34,7 @@ export class ContabilidadComponent implements OnInit {
         this.fechas.fechaInicio, 
         this.fechas.fechaFinal)
     }
-      
-
   }
-
   citaMd;
   public onPago(id){
     let token = localStorage.getItem('accessToken');
@@ -50,5 +47,4 @@ export class ContabilidadComponent implements OnInit {
       location.reload();
     });
   }
-
 }
