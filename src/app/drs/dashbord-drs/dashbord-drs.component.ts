@@ -45,6 +45,7 @@ export class DashbordDrsComponent implements OnInit {
      horaInicio: new Date(),
      catUsuariosId: ""
    }
+   
 
   
 
@@ -55,14 +56,13 @@ export class DashbordDrsComponent implements OnInit {
     let urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas?access_token=${token}`;
     this.http.get(urlApi).subscribe((res:any) => {
       if(res){
-        res.forEach(element => {
+        res.find(element => {
+
           let fechaDb = moment(element.fecha_cita).format('YYYY MM DD');
           let fechaHoy = moment(hoy).format('YYYY MM DD');
   
           if(fechaDb < fechaHoy && element.estadoPago == 'PENDIENTE') {
               this.especialidad = 'Adeudo';
-            } else {
-              this.especialidad = this.user.especialidad;
             } 
           });
       } else {
@@ -112,42 +112,184 @@ export class DashbordDrsComponent implements OnInit {
       let horaActual = new Date().getTime();
       let horaCita = new Date(this.reg_cita.horaInicio).getTime();
 
-      let diaCita = moment(this.reg_cita.fechaCita).format('dddd');
-      let horaInicio = moment('08:59', 'HH:mm').format('HH:mm');
-      let horaFinal = moment('21:00', 'HH:mm').format('HH:mm');
-      let horaFinalS = moment('16:00', 'HH:mm').format('HH:mm');
+      
    
     if(!this.reg_cita.consultorio){
       Swal.fire({
         position: 'center',
         type: 'error',
-        title: 'Especifique un consultorio',
-        showConfirmButton: false,
-        timer: 2500
+        title: 'Especifique un consultorio.',
+        showConfirmButton: true
       })
     } else if( fechaCita < hoy){
       Swal.fire({
         position: 'center',
         type: 'error',
-        title: 'Fecha invalida',
-        showConfirmButton: false,
-        timer: 2500
+        title: 'La fecha de la cita es anterior a la actual.',
+        text: 'Por favor rectifique.',
+        showConfirmButton: true
       })
     } else if(horaCita < horaActual) {
       Swal.fire({
         position: 'center',
         type: 'error',
-        title: 'Hora invalida',
-        showConfirmButton: false,
-        timer: 2500
+        title: 'Rectifique la hora.',
+        text: 'La hora de la cita es incorrecta. ',
+        showConfirmButton: true
       })
     } else {
+        let diaCita = moment(this.reg_cita.fechaCita).format('dddd');
+        let horaInicio = moment('08:59', 'HH:mm').format('HH:mm');
+        let horaFinal = moment('21:00', 'HH:mm').format('HH:mm');
+        let horaFinalS = moment('16:00', 'HH:mm').format('HH:mm');
 
-     console.log('Valido!');
+        let horaCita = moment(this.reg_cita.horaInicio).format('HH:mm');
+        
+        switch (diaCita) {
+            case 'domingo':
+                Swal.fire({
+                    position: 'center',
+                    type: 'error',
+                    title: '¡Lo sentimos!',
+                    text: 'Los domingos no hay servicio.',
+                    showConfirmButton: true,
+                    timer: 3500
+                });
+                break;
+            case 'lunes':
+                if (horaCita >= horaInicio && horaCita < horaFinal) {
+                    this.regCita(res)
+                } else {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'error',
+                        title: '¡Lo sentimos!',
+                        text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
+                        showConfirmButton: true,
+                        timer: 3500
+                    });
+                }
+                break;
+            case 'martes':
+                if (horaCita >= horaInicio && horaCita < horaFinal) {
+                    this.regCita(res)
+                } else {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'error',
+                        title: '¡Lo sentimos!',
+                        text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
+                        showConfirmButton: true,
+                        timer: 3500
+                    });
+                }
+                break;
+            case 'miércoles':
+                if (horaCita >= horaInicio && horaCita < horaFinal) {
+                    this.regCita(res)
+                } else {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'error',
+                        title: '¡Lo sentimos!',
+                        text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
+                        showConfirmButton: true,
+                        timer: 3500
+                    });
+                }
+                break;
+            case 'jueves':
+                if (horaCita >= horaInicio && horaCita < horaFinal) {
+                    this.regCita(res)
+                } else {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'error',
+                        title: '¡Lo sentimos!',
+                        text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
+                        showConfirmButton: true,
+                        timer: 3500
+                    });
+                }
+                break;
+            case 'viernes':
+                if (horaCita >= horaInicio && horaCita < horaFinal) {
+                    this.regCita(res)
+                } else {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'error',
+                        title: '¡Lo sentimos!',
+                        text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
+                        showConfirmButton: true,
+                        timer: 3500
+                    });
+                }
+                break;
+            case 'sábado':
+                if (horaCita >= horaInicio && horaCita < horaFinalS) {
+                    this.regCita(res)
+                } else {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'error',
+                        title: '¡Lo sentimos!',
+                        text: 'Recuerde que el horario de servicio es de 9:00 AM a 4:00 PM',
+                        showConfirmButton: true,
+                        timer: 3500
+                    });
+                }
+                break;
+        }
+       
     }
     });
 
    }
+
+   regCita(res: any) {
+    let coin: Boolean = true;
+    this.reg_cita.horaInicio = this.reg_cita.fechaCita;
+    let reg_cita2 = {
+        consultorio: this.reg_cita.consultorio,
+        horaInicio: this.reg_cita.horaInicio
+    }
+    let found = res.reservas.find( coincidencia => {
+        let horaForm = moment(reg_cita2.horaInicio).format('LT');
+        let horaDB = moment(coincidencia.horaInicio).format('LT');
+        return coincidencia.consultorio === reg_cita2.consultorio && horaDB === horaForm
+    });
+    if (!found) {
+        this.citasServices.citaUser(
+                this.reg_cita.fechaCita,
+                this.reg_cita.consultorio,
+                this.reg_cita.estadoPago,
+                this.reg_cita.horaInicio,
+                this.reg_cita.catUsuariosId
+            )
+            .subscribe(data => {
+                data;
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Cita registrada con Exito',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            })
+
+    } else {
+        Swal.fire({
+            position: 'center',
+            type: 'error',
+            title: 'Consultorio y/o Horario',
+            text: 'No displonibles',
+            showConfirmButton: true,
+            
+        });
+    }
+    
+    }
 
   
 
@@ -165,8 +307,8 @@ export class DashbordDrsComponent implements OnInit {
           type: 'error',
           title: 'No puedes eliminar esta cita.',
           text: 'Ya esta pagada o falta menos de 24hrs',
-          showConfirmButton: false,
-          timer: 2500
+          showConfirmButton: true,
+          
         })
       } else {
 
@@ -177,8 +319,8 @@ export class DashbordDrsComponent implements OnInit {
               position: 'center',
               type: 'success',
               title: 'Cita eliminada con exito.',
-              showConfirmButton: false,
-              timer: 2500
+              showConfirmButton: true,
+              
             })
           this.citasServices.getCitas();
           })
@@ -189,5 +331,3 @@ export class DashbordDrsComponent implements OnInit {
     })
   }
 }
-      
-      
