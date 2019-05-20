@@ -36,7 +36,6 @@ export class LoginComponent {
               position: 'center',
               type: 'error',
               title: 'Usuario y/o contraseña invalidos.',
-              text:`${err}`,
               showConfirmButton: false,
               timer: 3500
             })
