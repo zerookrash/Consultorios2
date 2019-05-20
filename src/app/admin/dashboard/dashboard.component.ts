@@ -31,11 +31,11 @@ export class DashboardComponent implements OnInit {
   citaMd;
   public onPago(id){
     let token = localStorage.getItem('accessToken');
-    this.http.get(`http://localhost:3000/api/cat_citas2s/${id}?access_token=${token}`)
+    this.http.get(`http://localhost:8061/api/cat_citas2s/${id}?access_token=${token}`)
     .subscribe((res:CitaInterface) => {
       res.estadoPago = 'PAGADO'
       this.citaMd = res;
-      this.http.put(`http://localhost:3000/api/cat_usuarios/${this.citaMd.catUsuariosId}/citas/${this.citaMd.id}?access_token=${token}`, this.citaMd)
+      this.http.put(`http://localhost:8061/api/cat_usuarios/${this.citaMd.catUsuariosId}/citas/${this.citaMd.id}?access_token=${token}`, this.citaMd)
       .subscribe( data => data);
       location.reload();
     });
