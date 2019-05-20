@@ -24,7 +24,7 @@ export class CitasService {
   public cargarCitas(){
     return new Promise( () => {
       let token = localStorage.getItem('accessToken');
-      let urlApi = `http://localhost:3000/api/cat_citas2s?access_token=${token}`;
+      let urlApi = `http://localhost:8061/api/cat_citas2s?access_token=${token}`;
       this.http.get(urlApi)
       .subscribe((res:CitaInterface) => {
         this.citas = 0;
@@ -65,7 +65,7 @@ export class CitasService {
   public getAllCitas(){
     return new Promise ( () => {
       let token = localStorage.getItem('accessToken');
-      let urlApi = `http://localhost:3000/api/cat_citas2s?access_token=${token}`;
+      let urlApi = `http://localhost:8061/api/cat_citas2s?access_token=${token}`;
       this.http.get(urlApi)
       .subscribe((res:any) => {
         this.citasPendientes = res.filter( pendiente => pendiente.estadoPago == 'PENDIENTE' );
@@ -87,7 +87,7 @@ export class CitasService {
      let usrJ = JSON.parse(usr);
      let id = usrJ.id;
      let token = localStorage.getItem("accessToken");
-     const urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas?access_token=${token}`;
+     const urlApi = `http://localhost:8061/api/cat_usuarios/${id}/citas?access_token=${token}`;
      return this.http.post(urlApi, {
         fecha_cita,
         consultorio,
@@ -107,7 +107,7 @@ export class CitasService {
       let usrJ = JSON.parse(usr);
       let id = usrJ.id;
       let token = localStorage.getItem("accessToken");
-      const urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas?access_token=${token}`;
+      const urlApi = `http://localhost:8061/api/cat_usuarios/${id}/citas?access_token=${token}`;
       return this.http.get(urlApi)
         .subscribe((data: CitaInterface) => {
           this.citasUsr = data;
