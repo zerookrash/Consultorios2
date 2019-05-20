@@ -1,9 +1,9 @@
 <div>
     <div class="container">
-        <button class="btn btn-circle btn-secondary btn-ttc m-3" (click)="onRefresh()"><i class="fas fa-sync"></i></button>
+        <button class="btn btn-outline-primary m-3 btn-rounded" (click)="onRefresh()">Refrescar</button>
         <div class="card pad" *ngFor="let msn of mensajes.msns">
             <div class="card-title m-4">
-                <h2>{{msn.nombre}}</h2> <br> {{msn.correo}}
+                <h2>{{msn.nombre}}</h2> <br> {{msn.email}}
             </div>
             <hr>
             <div class="card-body m-4">
@@ -12,7 +12,7 @@
                 </p>
             </div>
             <div class="align-self-end m-2">
-                <a href="mailto:{{ msn.correo }}" class="btn btn-primary btn-circle m-1 mb-1"><i class="fas fa-share-square"></i></a>
+                <a href="mailto:{{ msn.email }}" class="btn btn-primary btn-circle m-1 mb-1"><i class="fas fa-share-square"></i></a>
                 <button class="btn btn-circle btn-danger m-1 mb-1" (click)="onDelete(msn.id)"><i class="fas fa-trash"></i></button>
             </div>
         </div>

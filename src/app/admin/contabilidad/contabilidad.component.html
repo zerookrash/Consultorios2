@@ -2,7 +2,7 @@
     <h1 class="text-center">Contabilidad</h1>
     <div class="card pad">
         <div class="card-title">
-            <h2>Comparativa de Fechas</h2>
+            <h2>Intervalo de Fechas</h2>
         </div>
         <div class="card-body">
             <!-- Form Fechas -->
@@ -64,7 +64,7 @@
                                 <th scope="col">Fecha y hora</th>
                                 <th scope="col">Consultorio</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Pago</th>
+                                <!-- <th scope="col">Pago</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -72,7 +72,7 @@
                                 <td> {{cita.fecha_cita | date: 'medium'}} </td>
                                 <td> {{cita.consultorio}} </td>
                                 <td> {{cita.estadoPago}} </td>
-                                <td> <button class="btn btn-circle btn-info" (click)="onPago(cita.id)"><i class="fas fa-dollar-sign"></i></button> </td>
+                                <!-- <td> <button class="btn btn-circle btn-info" (click)="onPago(cita.id)"><i class="fas fa-dollar-sign"></i></button> </td> -->
                             </tr>
                         </tbody>
                     </table>
