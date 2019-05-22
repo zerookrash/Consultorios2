@@ -16,7 +16,7 @@ export class AuthService {
 
   registerUser( rol: string, realm: string, username: string, password: string, email: string, especialidad: string, telefono: string, consultorio:string, contrato: string, expira: Date, alta: Date ) {
     let accessToken = localStorage.getItem("accessToken");
-    const url_api = `http://localhost:8061/api/cat_usuarios?access_token=${accessToken}`;
+    const url_api = `http://localhost:3000/api/cat_usuarios?access_token=${accessToken}`;
     return this.http
       .post<UserInterface>(
         url_api,
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   loginuser(username: string, password: string): Observable<any> {
-    const url_api = "http://localhost:8061/api/cat_usuarios/login?include=user";
+    const url_api = "http://localhost:3000/api/cat_usuarios/login?include=user";
     return this.http
       .post<UserInterface>(
         url_api,
@@ -74,7 +74,7 @@ export class AuthService {
 
   logoutUser() {
     let accessToken = localStorage.getItem("accessToken");
-    const url_api = `http://localhost:8061/api/cat_usuarios/logout?access_token=${accessToken}`;
+    const url_api = `http://localhost:3000/api/cat_usuarios/logout?access_token=${accessToken}`;
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
     return this.http.post<UserInterface>(url_api, { headers: this.headers });
