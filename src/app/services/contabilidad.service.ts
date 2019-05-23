@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CitasService } from './citas.service';
-import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +21,6 @@ export class ContabilidadService {
   public onRango(fechaInicio:Date, fechaFin:Date){
     let token = localStorage.getItem("accessToken");
     let urlApi = `http://localhost:3000/api/cat_citas2s?filter={%22where%22:{%22fecha_cita%22:{%22between%22:[%22${fechaInicio}%22,%22${fechaFin}%22]}}}&access_token=${token}`;
-    // filter={%22where%22:{%22and%22:[{%22hora_inicio%22:{%22gte%22:${fechaInicio}%22}},{%22lte%22:${fechaFin}%22}]}}
-    // filter={%22where%22:{%22fecha_cita%22:{%22between%22:[%22${fechaInicio}%22,%22${fechaFin}%22]}}}
     return this.http.get(urlApi)
     .subscribe((res: any) =>{
 
