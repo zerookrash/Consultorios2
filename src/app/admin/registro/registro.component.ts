@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import * as moment from 'moment';
 
 import { ClientesInterface } from '../../models/clientes-interface';
-import { DatosService } from '../../services/datos.service';
 import Swal from 'sweetalert2';
 import { ClientesService } from '../../services/clientes.service';
 
@@ -16,44 +15,38 @@ import { ClientesService } from '../../services/clientes.service';
 export class RegistroComponent implements OnInit {
 
   moment = moment.locale('es');
-  private reg_user: ClientesInterface = {
+  private reg_user: any = {
     rol: "",
     especialidad: "",
     telefono: "",
     consultorio: "Sin Consultorio Asignado",
     contrato: "",
-    expira: new Date(),
     alta: new Date(),
+    expira: new Date(),
     realm: "",
     username: "",
     email: "",
     password: ""
   }
-  public exp = moment(this.reg_user.expira).add(1, 'year').format('D / MM / YYYY');
+  public exp = moment(this.reg_user.expira).add(1, 'year').format('D / MM YYYY');
+  public exp2 = moment(this.reg_user.expira).add(1, 'year').format().toString();
   public alt = moment(this.reg_user.alta).format('D / MM / YYYY');
-
+  
   constructor( 
-    private datosService: DatosService,
     private authService: AuthService,
     private clientes: ClientesService
     ) {
-      
-      
       clientes.usrs();
-
     }
-  
-  
-
-  
-  
-  ngOnInit() {
-  }
+    ngOnInit() {
+      console.log(this.exp);
+      
+    }
 
 
   
   onRegister(form: NgForm): void{
-    
+    this.reg_user.expira = this.exp2
     if(form.valid) {
       this.authService
         .registerUser(
@@ -91,8 +84,8 @@ export class RegistroComponent implements OnInit {
       })
     }
     setTimeout(() => {
-      location.reload();
-    }, 3000);
+      this.clientes.usrs();
+    }, 2000);
     
   }   
 }
