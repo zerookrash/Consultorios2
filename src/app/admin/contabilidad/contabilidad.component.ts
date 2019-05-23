@@ -27,7 +27,7 @@ export class ContabilidadComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDateParam(form: NgForm): void{
+  onDateParam(form){
 
     if(form.valid){
       this.contabilidadService.onRango(
@@ -35,6 +35,7 @@ export class ContabilidadComponent implements OnInit {
         this.fechas.fechaFinal)
     }
   }
+
   citaMd;
   public onPago(id){
     let token = localStorage.getItem('accessToken');
