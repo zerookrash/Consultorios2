@@ -53,7 +53,7 @@ export class DashbordDrsComponent implements OnInit {
     let hoy = new Date();
     let token = localStorage.getItem("accessToken");
     let id = this.user.id;
-    let urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas?access_token=${token}`;
+    let urlApi = `http://134.209.76.197:4001/api/cat_usuarios/${id}/citas?access_token=${token}`;
     this.http.get(urlApi).subscribe((res:any) => {
       if(res){
         res.find(element => {
@@ -100,7 +100,7 @@ export class DashbordDrsComponent implements OnInit {
    onCita(){
 
     let token = localStorage.getItem("accessToken");
-    let urlApi = `http://localhost:3000/api/cat_citas2s/reservas-hoy?fecha=${this.reg_cita.fechaCita}&access_token=${token}`;
+    let urlApi = `http://134.209.76.197:4001/api/cat_citas2s/reservas-hoy?fecha=${this.reg_cita.fechaCita}&access_token=${token}`;
     this.http.get(urlApi)
     .subscribe( (res:any) => {
 
@@ -112,6 +112,9 @@ export class DashbordDrsComponent implements OnInit {
       let horaActual = new Date().getTime();
       let horaCita = new Date(this.reg_cita.horaInicio).getTime();
 
+      console.log(horaActual);
+      console.log(horaCita);
+      
       
    
     if(!this.reg_cita.consultorio){
@@ -152,8 +155,7 @@ export class DashbordDrsComponent implements OnInit {
                     type: 'error',
                     title: '¡Lo sentimos!',
                     text: 'Los domingos no hay servicio.',
-                    showConfirmButton: true,
-                    timer: 3500
+                    showConfirmButton: true
                 });
                 break;
             case 'lunes':
@@ -165,8 +167,7 @@ export class DashbordDrsComponent implements OnInit {
                         type: 'error',
                         title: '¡Lo sentimos!',
                         text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
-                        showConfirmButton: true,
-                        timer: 3500
+                        showConfirmButton: true
                     });
                 }
                 break;
@@ -179,8 +180,7 @@ export class DashbordDrsComponent implements OnInit {
                         type: 'error',
                         title: '¡Lo sentimos!',
                         text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
-                        showConfirmButton: true,
-                        timer: 3500
+                        showConfirmButton: true
                     });
                 }
                 break;
@@ -193,8 +193,7 @@ export class DashbordDrsComponent implements OnInit {
                         type: 'error',
                         title: '¡Lo sentimos!',
                         text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
-                        showConfirmButton: true,
-                        timer: 3500
+                        showConfirmButton: true
                     });
                 }
                 break;
@@ -207,8 +206,7 @@ export class DashbordDrsComponent implements OnInit {
                         type: 'error',
                         title: '¡Lo sentimos!',
                         text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
-                        showConfirmButton: true,
-                        timer: 3500
+                        showConfirmButton: true
                     });
                 }
                 break;
@@ -221,8 +219,7 @@ export class DashbordDrsComponent implements OnInit {
                         type: 'error',
                         title: '¡Lo sentimos!',
                         text: 'Recuerde que el horario de servicio es de 9:00 AM a 9:00 PM',
-                        showConfirmButton: true,
-                        timer: 3500
+                        showConfirmButton: true
                     });
                 }
                 break;
@@ -235,8 +232,7 @@ export class DashbordDrsComponent implements OnInit {
                         type: 'error',
                         title: '¡Lo sentimos!',
                         text: 'Recuerde que el horario de servicio es de 9:00 AM a 4:00 PM',
-                        showConfirmButton: true,
-                        timer: 3500
+                        showConfirmButton: true
                     });
                 }
                 break;
@@ -295,7 +291,7 @@ export class DashbordDrsComponent implements OnInit {
 
   onDelete(id, fk) {
     let token = localStorage.getItem("accessToken");
-    let urlCita = `http://localhost:3000/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
+    let urlCita = `http://134.209.76.197:4001/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
     this.http.get(urlCita).subscribe( (res:CitaInterface) => {
 
       let hoy = moment(new Date());
@@ -312,7 +308,7 @@ export class DashbordDrsComponent implements OnInit {
         })
       } else {
 
-        let urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
+        let urlApi = `http://134.209.76.197:4001/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
           this.http.delete(urlApi).subscribe( res => {
             res;
             Swal.fire({

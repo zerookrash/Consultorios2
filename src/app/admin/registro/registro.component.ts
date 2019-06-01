@@ -28,7 +28,7 @@ export class RegistroComponent implements OnInit {
     email: "",
     password: ""
   }
-  public exp = moment(this.reg_user.expira).add(1, 'year').format('D / MM YYYY');
+  public exp = moment(this.reg_user.expira).add(1, 'year').format('D / MM / YYYY');
   public exp2 = moment(this.reg_user.expira).add(1, 'year').format().toString();
   public alt = moment(this.reg_user.alta).format('D / MM / YYYY');
   
@@ -39,7 +39,6 @@ export class RegistroComponent implements OnInit {
       clientes.usrs();
     }
     ngOnInit() {
-      console.log(this.exp);
       
     }
 

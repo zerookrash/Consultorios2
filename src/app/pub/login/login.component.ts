@@ -31,14 +31,7 @@ export class LoginComponent {
           },
           err => {
             console.log(err);
-             // Alerta de Error
-            Swal.fire({
-              position: 'center',
-              type: 'error',
-              title: 'Usuario y/o contraseña invalidos.',
-              showConfirmButton: false,
-              timer: 3500
-            })
+            alert('Usuario no existente');
           }
         );
     }

@@ -99,7 +99,7 @@
 
                     <div class="col-12 col-md-5">
                         <div class="form-group">
-                            <input type="text" onkeyup="this.value=this.value.toUpperCase()" #contrato="ngModel" name="contrato" class="form-control" placeholder="No. de Contrato" [(ngModel)]="reg_user.contrato" required minlength="5" maxlength="10">
+                            <input type="text" onkeyup="this.value=this.value.toUpperCase()" #contrato="ngModel" name="contrato" class="form-control" placeholder="No. de Contrato" [(ngModel)]="reg_user.contrato" required minlength="5" maxlength="25">
                         </div>
                         <div class="alert alert-danger" role="alert" *ngIf="contrato.touched && !contrato.valid">
                             <div *ngIf="contrato.errors.required">Número de contrato is required</div>
