@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
-import { map } from "rxjs/operators";
+import { map, catchError, retry } from "rxjs/operators";
 import { isNullOrUndefined } from "util";
 
 import { UserInterface } from "../models/user-interface";
+import { throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: "root"
 })
@@ -14,11 +16,13 @@ export class AuthService {
     "Content-Type": "application/json"
   });
 
+
+
   registerUser( rol: string, realm: string, username: string, password: string, email: string, especialidad: string, telefono: string, consultorio:string, contrato: string, expira: Date, alta: Date ) {
     let accessToken = localStorage.getItem("accessToken");
     const url_api = `http://134.209.76.197:4001/api/cat_usuarios?access_token=${accessToken}`;
-    return this.http
-      .post<UserInterface>(
+      return this.http
+      .post(
         url_api,
         {
           rol,
@@ -35,8 +39,36 @@ export class AuthService {
         },
         { headers: this.headers }
       )
-      .pipe(map(data => data));
+      .pipe(
+        map(data => data),
+        catchError(this.handleError)
+        );
   }
+
+  handleError(error){
+    let errorMessage = "";
+    if (error.error instanceof ErrorEvent){
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // errorMessage = `Error Code: ${error.status}\n Message: ${error.message}`;
+      errorMessage = `Error Code: ${error.status} Usuario duplicado.`;
+    }
+    // window.alert(errorMessage);
+    Swal.fire({
+      position: 'center',
+      type: 'error',
+      title: 'Nuevo usuario NO se pudo registrar.',
+      text: `${errorMessage}`,
+      showConfirmButton: true
+    });
+    return throwError(errorMessage);
+  }
+
+
+
+
+
+
 
   loginuser(username: string, password: string): Observable<any> {
     const url_api = "http://134.209.76.197:4001/api/cat_usuarios/login?include=user";

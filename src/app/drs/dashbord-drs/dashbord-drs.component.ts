@@ -111,12 +111,7 @@ export class DashbordDrsComponent implements OnInit {
 
       let horaActual = new Date().getTime();
       let horaCita = new Date(this.reg_cita.horaInicio).getTime();
-
-      console.log(horaActual);
-      console.log(horaCita);
-      
-      
-   
+         
     if(!this.reg_cita.consultorio){
       Swal.fire({
         position: 'center',

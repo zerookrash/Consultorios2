@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 import { CitasService } from '../../services/citas.service';
 import { CitaInterface } from 'src/app/models/cita.interface';
@@ -36,7 +35,9 @@ export class DashboardComponent implements OnInit {
       this.citaMd = res;
       this.http.put(`http://134.209.76.197:4001/api/cat_usuarios/${this.citaMd.catUsuariosId}/citas/${this.citaMd.id}?access_token=${token}`, this.citaMd)
       .subscribe( data => data);
-      this.citasServices.getAllCitas();
+      setTimeout(() => {
+        this.citasServices.getAllCitas();
+      },500);
     });
   }
 }

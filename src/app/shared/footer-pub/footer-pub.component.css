@@ -8,7 +8,11 @@
 }
 
 .margen {
-    margin-left: 12px;
+    margin: auto;
+}
+
+.margen i {
+    margin: 12px;
 }
 
 .link {

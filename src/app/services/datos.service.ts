@@ -20,7 +20,6 @@ export class DatosService {
       this.http.get(`http://134.209.76.197:4001/api/cat_usuarios?access_token=${token}`)
       .subscribe(( res: ClientesInterface[] ) => {
         this.cliente = res;
-        console.log(this.cliente);
       });
     });
   }

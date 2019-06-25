@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 import { map } from 'rxjs/operators';
@@ -63,15 +63,14 @@ export class CitasService {
 
   // CITAS PENDIENTES DE PAGO
   public getAllCitas(){
-    return new Promise ( () => {
-      let token = localStorage.getItem('accessToken');
-      let urlApi = `http://134.209.76.197:4001/api/cat_citas2s?access_token=${token}`;
-      this.http.get(urlApi)
-      .subscribe((res:any) => {
-        this.citasPendientes = res.filter( pendiente => pendiente.estadoPago == 'PENDIENTE' );
-      })
-    });
-  }
+    let token = localStorage.getItem('accessToken');
+    let urlApi = `http://134.209.76.197:4001/api/cat_citas2s?access_token=${token}`;
+    this.http.get(urlApi)
+    .subscribe((res:any) => {
+      this.citasPendientes = res.filter( pendiete => pendiete.estadoPago === 'PENDIENTE' );
+      this.citasPendientes.sort( (a, b) => (<any>new Date(a.fecha_cita) - <any>new Date(b.fecha_cita)) );
+    })
+}
 
 
 

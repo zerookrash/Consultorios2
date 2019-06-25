@@ -23,9 +23,9 @@ export class ContabilidadService {
     let urlApi = `http://134.209.76.197:4001/api/cat_citas2s?filter={%22where%22:{%22fecha_cita%22:{%22between%22:[%22${fechaInicio}%22,%22${fechaFin}%22]}}}&access_token=${token}`;
     return this.http.get(urlApi)
     .subscribe((res: any) =>{
-
       this.visible = true;
       this.citaPagada = res.filter( pagadas => pagadas.estadoPago == 'PAGADO' );
+      this.citaPagada.sort( (a, b) => (<any>new Date(a.fecha_cita) - <any>new Date(b.fecha_cita)) )
       this.ctaCitas = this.citaPagada.length;
       this.monyeCitas = 0;
 

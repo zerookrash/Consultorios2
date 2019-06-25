@@ -30,9 +30,14 @@ export class LoginComponent {
             }
           },
           err => {
-            console.log(err);
-            alert('Usuario no existente');
-          }
+            Swal.fire({
+              position: 'center',
+              type: 'error',
+              title: 'Login incorrecto',
+              showConfirmButton: false,
+              timer: 2500
+          });
+        }
         );
     }
 }
