@@ -66,7 +66,7 @@ const routes: Routes = [
     ]
   },
   { path: '', redirectTo: 'pub/home', pathMatch: 'full' },
-  { path: '**', component: NopagefoundComponent }
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
