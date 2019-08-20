@@ -13,7 +13,7 @@ export class ContactoService {
   msns: MsnInterface;
 
   sendMsn( body ){
-    const url_api = `http://134.209.76.197:4001/api/cat_contactos`;
+    const url_api = `http://localhost:3000/api/cat_contactos`;
     return this.http
       .post(url_api, body)
       .pipe(map(data => data));
@@ -21,7 +21,7 @@ export class ContactoService {
 
   getMsn(){
     return new Promise( () => {
-      this.http.get('http://134.209.76.197:4001/api/cat_contactos')
+      this.http.get('http://localhost:3000/api/cat_contactos')
         .subscribe((res: MsnInterface)=>{
           this.msns = res.reverse();
         });

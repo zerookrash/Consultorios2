@@ -23,7 +23,7 @@ export class LoginComponent {
             this.authService.setUser(data.user);
             let token = data.id;
             this.authService.setToken(token);
-            if ( data.user.rol == 'administrador' ){
+            if ( data.user.rol == 'admin' ){
               this.router.navigate(['pages/']);
             } else {
               this.router.navigate(['drs/'])

@@ -25,7 +25,7 @@ export class InboxComponent implements OnInit {
       }
 
       onDelete(id) {
-        let urlApi = `http://134.209.76.197:4001/api/cat_contactos/${id}`;
+        let urlApi = `http://localhost:3000/api/cat_contactos/${id}`;
         this.http.delete(urlApi).subscribe(data => {
           Swal.fire({
             position: 'center',
