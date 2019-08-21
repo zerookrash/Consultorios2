@@ -20,7 +20,7 @@ export class ContabilidadService {
 
   public onRango(fechaInicio:Date, fechaFin:Date){
     let token = localStorage.getItem("accessToken");
-    let urlApi = `http://localhost:${process.env.PORT}/api/cat_citas2s?filter={%22where%22:{%22fecha_cita%22:{%22between%22:[%22${fechaInicio}%22,%22${fechaFin}%22]}}}&access_token=${token}`;
+    let urlApi = `http://localhost:3000/api/cat_citas2s?filter={%22where%22:{%22fecha_cita%22:{%22between%22:[%22${fechaInicio}%22,%22${fechaFin}%22]}}}&access_token=${token}`;
     return this.http.get(urlApi)
     .subscribe((res: any) =>{
       this.visible = true;
