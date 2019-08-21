@@ -1,26 +1,26 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
-import { Observable } from "rxjs/internal/Observable";
-import { map, catchError, retry } from "rxjs/operators";
-import { isNullOrUndefined } from "util";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { map, catchError, retry } from 'rxjs/operators';
+import { isNullOrUndefined } from 'util';
 
-import { UserInterface } from "../models/user-interface";
+import { UserInterface } from '../models/user-interface';
 import { throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
   headers: HttpHeaders = new HttpHeaders({
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   });
 
 
 
   registerUser( rol: string, realm: string, username: string, password: string, email: string, especialidad: string, telefono: string, consultorio:string, contrato: string, expira: Date, alta: Date ) {
-    let accessToken = localStorage.getItem("accessToken");
-    const url_api = `http://localhost:3000/api/cat_usuarios?access_token=${accessToken}`;
+    let accessToken = localStorage.getItem('accessToken');
+    const url_api = `http://localhost:${process.env.PORT}/api/cat_usuarios?access_token=${accessToken}`;
       return this.http
       .post(
         url_api,
@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   handleError(error){
-    let errorMessage = "";
+    let errorMessage = '';
     if (error.error instanceof ErrorEvent){
       errorMessage = `Error: ${error.error.message}`;
     } else {
@@ -83,19 +83,19 @@ export class AuthService {
 
   setUser(user: UserInterface): void {
     let user_string = JSON.stringify(user);
-    localStorage.setItem("currentUser", user_string);
+    localStorage.setItem('currentUser', user_string);
   }
 
   setToken(token): void {
-    localStorage.setItem("accessToken", token);
+    localStorage.setItem('accessToken', token);
   }
 
   getToken() {
-    return localStorage.getItem("accessToken");
+    return localStorage.getItem('accessToken');
   }
 
   getCurrentUser(): UserInterface {
-    let user_string = localStorage.getItem("currentUser");
+    let user_string = localStorage.getItem('currentUser');
     if (!isNullOrUndefined(user_string)) {
       let user: UserInterface = JSON.parse(user_string);
       return user;
@@ -105,10 +105,10 @@ export class AuthService {
   }
 
   logoutUser() {
-    let accessToken = localStorage.getItem("accessToken");
-    const url_api = `http://localhost:3000/api/cat_usuarios/logout?access_token=${accessToken}`;
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("currentUser");
+    let accessToken = localStorage.getItem('accessToken');
+    const url_api = `http://localhost:${process.env.PORT}/api/cat_usuarios/logout?access_token=${accessToken}`;
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('currentUser');
     return this.http.post<UserInterface>(url_api, { headers: this.headers });
   }
 }

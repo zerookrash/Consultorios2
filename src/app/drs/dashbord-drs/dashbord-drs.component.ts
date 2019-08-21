@@ -53,7 +53,7 @@ export class DashbordDrsComponent implements OnInit {
     let hoy = new Date();
     let token = localStorage.getItem("accessToken");
     let id = this.user.id;
-    let urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas?access_token=${token}`;
+    let urlApi = `http://localhost:${process.env.PORT}/api/cat_usuarios/${id}/citas?access_token=${token}`;
     this.http.get(urlApi).subscribe((res:any) => {
       if(res){
         res.find(element => {
@@ -100,7 +100,7 @@ export class DashbordDrsComponent implements OnInit {
    onCita(){
 
     let token = localStorage.getItem("accessToken");
-    let urlApi = `http://localhost:3000/api/cat_citas2s/reservas-hoy?fecha=${this.reg_cita.fechaCita}&access_token=${token}`;
+    let urlApi = `http://localhost:${process.env.PORT}/api/cat_citas2s/reservas-hoy?fecha=${this.reg_cita.fechaCita}&access_token=${token}`;
     this.http.get(urlApi)
     .subscribe( (res:any) => {
 
@@ -286,7 +286,7 @@ export class DashbordDrsComponent implements OnInit {
 
   onDelete(id, fk) {
     let token = localStorage.getItem("accessToken");
-    let urlCita = `http://localhost:3000/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
+    let urlCita = `http://localhost:${process.env.PORT}/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
     this.http.get(urlCita).subscribe( (res:CitaInterface) => {
 
       let hoy = moment(new Date());
@@ -303,7 +303,7 @@ export class DashbordDrsComponent implements OnInit {
         })
       } else {
 
-        let urlApi = `http://localhost:3000/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
+        let urlApi = `http://localhost:${process.env.PORT}/api/cat_usuarios/${id}/citas/${fk}?access_token=${token}`;
           this.http.delete(urlApi).subscribe( res => {
             res;
             Swal.fire({

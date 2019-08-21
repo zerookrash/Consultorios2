@@ -13,7 +13,7 @@ export class ClientesService {
 
   public usrs (){
     let token = localStorage.getItem("accessToken");
-    let urlApi = `http://localhost:3000/api/cat_usuarios?access_token=${token}`;
+    let urlApi = `http://localhost:${process.env.PORT}/api/cat_usuarios?access_token=${token}`;
     return new Promise(() => {
       this.http.get(urlApi)
       .subscribe( (res: UserInterface) => {
