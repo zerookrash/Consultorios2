@@ -4,6 +4,10 @@ nav {
     border-bottom: 3px solid #36a0b2;
 }
 
+img.logo {
+    max-width: 20%;
+}
+
 nav li {
     align-content: flex-end;
 }
